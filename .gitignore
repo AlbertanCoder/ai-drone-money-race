@@ -3,10 +3,10 @@ __pycache__/
 *.pyc
 _check.js
 _payload.json
-_check_*.png
-_top2x.png
-_chart_crop.png
-_probe_*.html
+_probe*.html
+_dom.txt
+_m*.html
+_*.png
 
 # Local scratch
 *.log

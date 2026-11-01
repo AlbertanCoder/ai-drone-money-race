@@ -13,11 +13,11 @@ import pathlib
 import chart_data as cd
 
 HERE = pathlib.Path(__file__).resolve().parent
-OUT = HERE / "index.html"
+OUT = HERE / "simple.html"
 
 # --- geometry ---------------------------------------------------------------
 W, H = 1200, 560
-L, R, T, B = 80, 118, 56, 54
+L, R, T, B = 120, 118, 56, 54
 PW, PH = W - L - R, H - T - B
 X0, X1 = 1997.0, 2107.0
 Y0, Y1 = 0.03, 30000.0
@@ -162,8 +162,6 @@ def build_svg():
     o.append(f'<line x1="{L}" y1="{T}" x2="{L}" y2="{T + PH}" stroke="#cbd5e1"/>')
     o.append(f'<text class="cap" x="{L + 4}" y="{T - 16}">ESTIMATED, NOT SOURCED</text>')
     o.append(f'<text class="cap" x="{xp(cd.HISTORICAL_END) + 12:.1f}" y="{T - 16}">SCENARIO</text>')
-    o.append(f'<text class="tick" x="{L + PW}" y="{T + PH + 46}" text-anchor="end">'
-             f'solid + dots = estimate \u00b7 dashed + shading = scenario</text>')
     return (f'<svg viewBox="0 0 {W} {H}" role="img" '
             f'aria-label="Line chart of global annual investment in AI, conventional drones '
             f'and AI drones from 2000 to 2100">' + "".join(o) + "</svg>")
@@ -266,8 +264,12 @@ PAGE_HEAD = """<!DOCTYPE html>
   @media(max-width:640px){
     .stats{grid-template-columns:1fr}
     .wrap{padding:28px 16px 40px}
-    svg .nlab{font-size:17px} svg .tick{font-size:14px} svg .endval{font-size:16px}
-    svg .cap{font-size:12px}
+    /* The SVG scales with the container, so type inside it has to be sized in
+       viewBox units or it renders at ~4px. Region captions are dropped here
+       because the figcaption already says the same thing. */
+    svg .tick{font-size:32px}
+    svg .endval{font-size:26px}
+    svg .cap{display:none}
   }
   @media print{
     body{background:#fff}

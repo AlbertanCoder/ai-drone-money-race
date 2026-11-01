@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Money Race &mdash; AI vs Drones vs AI Drones, 2000&ndash;2100</title>
+<meta name="description" content="One chart of global annual investment in AI, conventional drones and AI drones from 2000 to 2100. Estimates to 2025, scenario after.">
+<style>
+  :root{--ink:#0f172a;--mute:#475569;--line:#e2e8f0;--bg:#f1f5f9;--card:#fff;
+        --ai:#2563eb;--dr:#d97706;--aid:#7c3aed;--proj:#b45309}
+  *,*::before,*::after{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-size:16px;line-height:1.55;
+       font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+       -webkit-font-smoothing:antialiased}
+  .wrap{max-width:1180px;margin:0 auto;padding:44px 24px 56px}
+  .eyebrow{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.16em;
+           text-transform:uppercase;color:var(--proj);background:#fff7ed;
+           border:1px solid #fed7aa;border-radius:999px;padding:5px 13px}
+  h1{font-size:clamp(26px,3.4vw,42px);line-height:1.1;letter-spacing:-.022em;
+     margin:16px 0 10px;font-weight:800}
+  h1 .a{color:var(--ai)} h1 .b{color:var(--proj)} h1 .c{color:var(--aid)}
+  .lede{font-size:17px;max-width:68ch;color:var(--mute);margin:0}
+  .stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:26px 0 18px}
+  .stat{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--c);
+        border-radius:12px;padding:14px 16px}
+  .stat .k{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
+  .stat .now{font-size:12px;font-weight:700;color:var(--mute);margin-top:6px;
+             font-variant-numeric:tabular-nums}
+  .stat .v{font-size:27px;font-weight:800;letter-spacing:-.025em;font-variant-numeric:tabular-nums}
+  .stat .n{font-size:12px;color:var(--mute);font-variant-numeric:tabular-nums}
+  figure{background:var(--card);border:1px solid var(--line);border-radius:14px;
+         margin:0;padding:18px 18px 10px}
+  svg{display:block;width:100%;height:auto}
+  svg .tick{font-size:12px;fill:var(--mute);font-variant-numeric:tabular-nums}
+  svg .cap{font-size:10.5px;font-weight:800;letter-spacing:.12em;fill:var(--proj)}
+  svg .endval{font-size:14px;font-weight:800;font-variant-numeric:tabular-nums}
+  svg .nlab{font-size:14px;font-weight:600;stroke:#fff;stroke-width:4;paint-order:stroke}
+  svg .nlab.b{font-weight:800}
+  .key{display:flex;gap:18px;flex-wrap:wrap;font-size:12.5px;font-weight:700;
+       color:var(--mute);margin:0 2px 10px}
+  .key span{display:inline-flex;align-items:center;gap:7px}
+  .key span::before{content:"";width:10px;height:10px;border-radius:3px;background:var(--c)}
+  figcaption{font-size:13px;color:var(--mute);margin:8px 2px 4px}
+  h2{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);
+     margin:34px 0 10px;font-weight:800}
+  ol.moments{list-style:none;margin:0;padding:0;background:var(--card);border:1px solid var(--line);
+             border-radius:14px;overflow:hidden}
+  ol.moments li{display:grid;grid-template-columns:70px 1fr;gap:2px 14px;padding:12px 18px;
+                border-top:1px solid var(--line);border-left:4px solid var(--c)}
+  ol.moments li:first-child{border-top:0}
+  ol.moments b{grid-row:span 2;font-size:15px;font-variant-numeric:tabular-nums}
+  ol.moments .t{font-weight:800}
+  ol.moments .d{font-size:13.5px;color:var(--mute)}
+  footer{margin-top:28px;font-size:13px;color:var(--mute);display:flex;gap:14px;
+         justify-content:space-between;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:16px}
+  footer span{max-width:62ch}
+  a{color:#2563eb;font-weight:700;text-decoration:none;white-space:nowrap}
+  a:hover{text-decoration:underline}
+  :focus-visible{outline:3px solid #2563eb;outline-offset:2px;border-radius:4px}
+  @media(max-width:640px){
+    .stats{grid-template-columns:1fr}
+    .wrap{padding:28px 16px 40px}
+    /* The SVG scales with the container, so type inside it has to be sized in
+       viewBox units or it renders at ~4px. Region captions are dropped here
+       because the figcaption already says the same thing. */
+    svg .tick{font-size:32px}
+    svg .endval{font-size:26px}
+    svg .cap{display:none}
+  }
+  @media print{
+    body{background:#fff}
+    .wrap{padding:0;max-width:none}
+    ol.moments,figure{break-inside:avoid}
+    a{color:inherit}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <span class="eyebrow">Illustrative model &middot; not a forecast</span>
+  <h1>The Money Race: <span class="a">AI</span> vs <span class="b">Drones</span> vs <span class="c">AI Drones</span></h1>
+  <p class="lede">Global annual investment, 2000&nbsp;&rarr;&nbsp;2100. AI compounds toward
+     $10.9T a year. Conventional drones peak at $75B in 2045, then lose the field to autonomy.</p>
+
+  <div class="stats"><div class="stat" style="--c:#2563eb"><div class="k">AI</div><div class="now">$410B in 2025</div><div class="v">$10.9T</div><div class="n">by 2100</div></div><div class="stat" style="--c:#d97706"><div class="k">Drones</div><div class="now">$42B in 2025</div><div class="v">$75B</div><div class="n">peak in 2045 · then $6B by 2100</div></div><div class="stat" style="--c:#7c3aed"><div class="k">AI Drones</div><div class="now">$28B in 2025</div><div class="v">$2.9T</div><div class="n">by 2100</div></div></div>
+
+  <figure>
+    <div class="key">
+      <span style="--c:#2563eb">AI</span>
+      <span style="--c:#d97706">Conventional drones</span>
+      <span style="--c:#7c3aed">AI drones</span>
+    </div>
+    <svg viewBox="0 0 1200 560" role="img" aria-label="Line chart of global annual investment in AI, conventional drones and AI drones from 2000 to 2100"><rect x="364.9" y="56" width="717.1" height="450" fill="#fff7ed"/><line x1="120" y1="466.8" x2="1082" y2="466.8" stroke="#e2e8f0" stroke-width="1"/><text class="tick" x="108" y="470.8" text-anchor="end">$100M</text><line x1="120" y1="391.8" x2="1082" y2="391.8" stroke="#e2e8f0" stroke-width="1"/><text class="tick" x="108" y="395.8" text-anchor="end">$1B</text><line x1="120" y1="316.8" x2="1082" y2="316.8" stroke="#e2e8f0" stroke-width="1"/><text class="tick" x="108" y="320.8" text-anchor="end">$10B</text><line x1="120" y1="241.8" x2="1082" y2="241.8" stroke="#e2e8f0" stroke-width="1"/><text class="tick" x="108" y="245.8" text-anchor="end">$100B</text><line x1="120" y1="166.8" x2="1082" y2="166.8" stroke="#e2e8f0" stroke-width="1"/><text class="tick" x="108" y="170.8" text-anchor="end">$1T</text><line x1="120" y1="91.8" x2="1082" y2="91.8" stroke="#e2e8f0" stroke-width="1"/><text class="tick" x="108" y="95.8" text-anchor="end">$10T</text><text class="tick" x="146.2" y="532" text-anchor="middle">2000</text><text class="tick" x="321.1" y="532" text-anchor="middle">2020</text><text class="tick" x="496.1" y="532" text-anchor="middle">2040</text><text class="tick" x="671.0" y="532" text-anchor="middle">2060</text><text class="tick" x="845.9" y="532" text-anchor="middle">2080</text><text class="tick" x="1020.8" y="532" text-anchor="middle">2100</text><polygon points="364.9,195.8 408.6,168.9 452.3,149.0 496.1,133.2 539.8,120.2 583.5,109.1 627.2,99.8 671.0,92.7 714.7,86.9 758.4,82.8 802.1,79.5 845.9,77.1 889.6,75.6 933.3,74.5 977.1,73.9 1020.8,73.7 1020.8,118.8 977.1,115.1 933.3,112.0 889.6,109.7 845.9,107.9 802.1,107.1 758.4,107.3 714.7,108.5 671.0,111.4 627.2,115.8 583.5,122.3 539.8,130.7 496.1,141.1 452.3,154.2 408.6,171.5 364.9,195.8" fill="#2563eb" opacity=".13"/><polygon points="364.9,270.0 408.6,260.0 452.3,253.3 496.1,248.8 539.8,246.3 583.5,245.7 627.2,247.3 671.0,250.4 714.7,255.3 758.4,261.6 802.1,270.0 845.9,279.2 889.6,288.7 933.3,300.0 977.1,309.6 1020.8,318.1 1020.8,363.3 977.1,350.8 933.3,337.6 889.6,322.8 845.9,310.0 802.1,297.6 758.4,286.2 714.7,276.9 671.0,269.1 627.2,263.3 583.5,258.9 539.8,256.8 496.1,256.6 452.3,258.5 408.6,262.6 364.9,270.0" fill="#d97706" opacity=".13"/><polygon points="364.9,283.2 408.6,245.8 452.3,216.7 496.1,194.6 539.8,177.5 583.5,164.3 627.2,153.3 671.0,144.5 714.7,137.5 758.4,131.8 802.1,127.3 845.9,123.8 889.6,121.1 933.3,119.0 977.1,117.6 1020.8,117.0 1020.8,162.2 977.1,158.8 933.3,156.6 889.6,155.1 845.9,154.5 802.1,154.9 758.4,156.4 714.7,159.1 671.0,163.2 627.2,169.2 583.5,177.5 539.8,188.0 496.1,202.5 452.3,221.9 408.6,248.4 364.9,283.2" fill="#7c3aed" opacity=".13"/><path d="M146.2,339.4 L190.0,324.1 L233.7,294.2 L277.4,270.0 L321.1,235.8 L364.9,195.8" fill="none" stroke="#2563eb" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><path d="M364.9,195.8 L408.6,170.2 L452.3,151.5 L496.1,136.9 L539.8,125.1 L583.5,115.0 L627.2,106.8 L671.0,100.7 L714.7,95.9 L758.4,92.8 L802.1,90.5 L845.9,89.0 L889.6,88.4 L933.3,88.1 L977.1,88.4 L1020.8,89.0" fill="none" stroke="#2563eb" stroke-width="2.4" stroke-dasharray="7 5" stroke-linejoin="round"/><circle cx="146.2" cy="339.4" r="3.6" fill="#2563eb" stroke="#fff" stroke-width="1.3"/><circle cx="190.0" cy="324.1" r="3.6" fill="#2563eb" stroke="#fff" stroke-width="1.3"/><circle cx="233.7" cy="294.2" r="3.6" fill="#2563eb" stroke="#fff" stroke-width="1.3"/><circle cx="277.4" cy="270.0" r="3.6" fill="#2563eb" stroke="#fff" stroke-width="1.3"/><circle cx="321.1" cy="235.8" r="3.6" fill="#2563eb" stroke="#fff" stroke-width="1.3"/><circle cx="364.9" cy="195.8" r="3.6" fill="#2563eb" stroke="#fff" stroke-width="1.3"/><path d="M146.2,369.2 L190.0,339.4 L233.7,313.7 L277.4,295.9 L321.1,281.0 L364.9,270.0" fill="none" stroke="#d97706" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><path d="M364.9,270.0 L408.6,261.3 L452.3,255.8 L496.1,252.5 L539.8,251.2 L583.5,251.6 L627.2,254.3 L671.0,258.4 L714.7,264.4 L758.4,271.6 L802.1,281.0 L845.9,291.1 L889.6,301.5 L933.3,313.7 L977.1,324.1 L1020.8,333.4" fill="none" stroke="#d97706" stroke-width="2.4" stroke-dasharray="7 5" stroke-linejoin="round"/><circle cx="146.2" cy="369.2" r="3.6" fill="#d97706" stroke="#fff" stroke-width="1.3"/><circle cx="190.0" cy="339.4" r="3.6" fill="#d97706" stroke="#fff" stroke-width="1.3"/><circle cx="233.7" cy="313.7" r="3.6" fill="#d97706" stroke="#fff" stroke-width="1.3"/><circle cx="277.4" cy="295.9" r="3.6" fill="#d97706" stroke="#fff" stroke-width="1.3"/><circle cx="321.1" cy="281.0" r="3.6" fill="#d97706" stroke="#fff" stroke-width="1.3"/><circle cx="364.9" cy="270.0" r="3.6" fill="#d97706" stroke="#fff" stroke-width="1.3"/><path d="M146.2,489.4 L190.0,444.2 L233.7,399.1 L277.4,361.9 L321.1,324.1 L364.9,283.2" fill="none" stroke="#7c3aed" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/><path d="M364.9,283.2 L408.6,247.1 L452.3,219.2 L496.1,198.3 L539.8,182.4 L583.5,170.2 L627.2,160.3 L671.0,152.5 L714.7,146.6 L758.4,141.9 L802.1,138.3 L845.9,135.7 L889.6,133.8 L933.3,132.7 L977.1,132.1 L1020.8,132.3" fill="none" stroke="#7c3aed" stroke-width="2.4" stroke-dasharray="7 5" stroke-linejoin="round"/><circle cx="146.2" cy="489.4" r="3.6" fill="#7c3aed" stroke="#fff" stroke-width="1.3"/><circle cx="190.0" cy="444.2" r="3.6" fill="#7c3aed" stroke="#fff" stroke-width="1.3"/><circle cx="233.7" cy="399.1" r="3.6" fill="#7c3aed" stroke="#fff" stroke-width="1.3"/><circle cx="277.4" cy="361.9" r="3.6" fill="#7c3aed" stroke="#fff" stroke-width="1.3"/><circle cx="321.1" cy="324.1" r="3.6" fill="#7c3aed" stroke="#fff" stroke-width="1.3"/><circle cx="364.9" cy="283.2" r="3.6" fill="#7c3aed" stroke="#fff" stroke-width="1.3"/><text class="endval" x="1094" y="94.0" fill="#2563eb">$10.9T</text><text class="endval" x="1094" y="338.4" fill="#b45309">$6B</text><text class="endval" x="1094" y="137.3" fill="#7c3aed">$2.9T</text><line x1="120" y1="506" x2="1082" y2="506" stroke="#cbd5e1"/><line x1="120" y1="56" x2="120" y2="506" stroke="#cbd5e1"/><text class="cap" x="124" y="40">ESTIMATED, NOT SOURCED</text><text class="cap" x="376.9" y="40">SCENARIO</text></svg>
+    <figcaption>Log scale &mdash; equal vertical distance means the same multiple, not the same
+      dollar amount. The two lower lines cross in 2027. Solid lines with dots are estimates;
+      dashed lines and the shaded band are a scenario, not a forecast.</figcaption>
+  </figure>
+
+  <h2>Five moments that moved the curve</h2>
+  <ol class="moments"><li style="--c:#2563eb"><b>2012</b><span class="t">AlexNet wins ImageNet</span><span class="d">Deep learning starts beating everything else.</span></li><li style="--c:#2563eb"><b>2022</b><span class="t">ChatGPT launches</span><span class="d">AI becomes a product, not a paper.</span></li><li style="--c:#2563eb"><b>2023</b><span class="t">NVIDIA crosses $1T</span><span class="d">The market prices the compute.</span></li><li style="--c:#2563eb"><b>2025</b><span class="t">AI capex supercycle</span><span class="d">Hyperscaler spend at record levels.</span></li><li style="--c:#7c3aed"><b>2027</b><span class="t">Autonomy overtakes</span><span class="d">AI drones outspend conventional drones.</span></li></ol>
+
+  <footer>
+    <span>2000&ndash;2025 are order-of-magnitude estimates, not sourced statistics.
+      2025&ndash;2100 is a scenario; the shaded band is an illustrative spread, not a
+      confidence interval.</span>
+    <a href="full.html">Chapters, use cases, Alberta, careers &rarr;</a>
+  </footer>
+</div>
+</body>
+</html>

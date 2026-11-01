@@ -28,9 +28,11 @@ scene, and how to get into the field.
 | `dashboard_template.html` | The page itself, including the hand-rolled SVG chart |
 | `build_dashboard.py` | Injects the model as JSON and writes the full dashboard |
 | `verify_dashboard.py` | Asserts structure, boundaries, dates and the uncertainty band |
-| `build_simple.py` | Builds the one-screen front page: static SVG, zero JavaScript |
+| `build_standard.py` | Builds the standard page: chart + three acts + six uses + Alberta |
+| `build_simple.py` | Builds the one-screen version: chart, three numbers, five moments |
 | `ai_drone_growth.py` | Static PNG poster, sharing the same model |
-| `index.html` | Generated one-screen page — what the site opens on |
+| `index.html` | Generated standard page — what the site opens on |
+| `simple.html` | Generated one-screen page, for when you just want the graph |
 | `full.html` | Generated long version: chapters, use cases, Alberta, careers, quiz, table |
 
 `index.html` and `full.html` are build artifacts. Do not edit them — edit the
@@ -39,7 +41,8 @@ templates and rebuild.
 ## Rebuild
 
 ```bash
-python build_simple.py        # model -> index.html   (one chart, five moments)
+python build_standard.py      # model -> index.html   (chart + three acts + six uses)
+python build_simple.py        # model -> simple.html  (one chart, five moments)
 python build_dashboard.py     # model + template -> ai_drone_dashboard.html + full.html
 python verify_dashboard.py    # asserts; also writes _check.js for syntax checking
 node --check _check.js        # validates the generated script block
