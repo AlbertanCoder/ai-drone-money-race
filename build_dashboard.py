@@ -85,6 +85,11 @@ if MARKER not in html:
 html = html.replace(MARKER, blob)
 OUTPUT.write_text(html, encoding="utf-8")
 
+# The dashboard is published as full.html; index.html is the one-screen view
+# produced by build_simple.py. Keep both in step on every build.
+FULL = HERE / "full.html"
+FULL.write_text(html, encoding="utf-8")
+
 kb = OUTPUT.stat().st_size / 1024
 print(f"saved -> {OUTPUT}")
 print(f"        {kb:,.0f} KB  |  {n} data points  |  {len(payload['events'])} events")
