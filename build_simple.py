@@ -192,7 +192,7 @@ MOMENTS = [
     ("2012", "AlexNet wins ImageNet", "Deep learning starts beating everything else.", "ai"),
     ("2022", "ChatGPT launches", "AI becomes a product, not a paper.", "ai"),
     ("2023", "NVIDIA crosses $1T", "The market prices the compute.", "ai"),
-    ("2025", "AI capex supercycle", "Hyperscaler spend at record levels.", "dr"),
+    ("2025", "AI capex supercycle", "Hyperscaler spend at record levels.", "ai"),
     ("2027", "Autonomy overtakes", "AI drones outspend conventional drones.", "aid"),
 ]
 
